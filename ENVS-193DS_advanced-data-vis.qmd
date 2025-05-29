@@ -1,0 +1,24 @@
+---
+title: "ENVS-193DS_advanced-data-vis"
+author: "Jose Cardoso"
+date: "05/28/2025"
+format:
+  html:
+    toc: true # use this to display a table of contents
+execute:
+  message: false # use this to make sure messages don't show up
+  warning: false # use this to make sure warnings don't show up
+---
+
+
+## Visualization 1
+
+
+
+## Visualization 2
+
+
+
+## Visualization 3
+
+
