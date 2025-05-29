@@ -10,15 +10,50 @@ execute:
   warning: false # use this to make sure warnings don't show up
 ---
 
+# 1. Set up
 
-## Visualization 1
+```{r}
+#| message: false
 
+# insert code to read in packages here
+library(tidyverse)
+library(janitor)
+library(here)
+library(flextable)
+library(ggpattern)
+
+# insert code to read in your data here
+ev_data <- read_csv("/Users/admin/Documents/github/ENVS-193DS_homework-03/data/EV_Mode_2.csv")
+```
+
+
+## Visualization 1: Boxplot with jitter
+
+```{r}
+ggplot(data = ev_data, # use the ev_data data frame
+       aes(x = Presence_of_the_Sun, # Sun presence on the x-axis
+           y = EV_switch_time, # time until ev switch on the y-axis
+           color = Presence_of_the_Sun))+ # color by if sun is present
+    geom_boxplot()+ # first layer is the boxplot
+    geom_jitter(width = 0.2, # jitter in the x-axis
+                height = 0)+ # no jitter in the y-axis
+    labs(x = "Presence of the Sun", # relabeling the x-axis
+         y = "Time until EV mode switch (min)")+ #relabeling the y-axis
+       scale_color_manual(values = c("Yes" = "goldenrod", # change the default color
+                                    "No" = "royalblue4")) 
+```
 
 
 ## Visualization 2
 
+```{r}
+
+```
 
 
 ## Visualization 3
 
+```{r}
+
+```
 
