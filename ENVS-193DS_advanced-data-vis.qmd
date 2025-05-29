@@ -16,10 +16,14 @@ execute:
 #| message: false
 
 # insert code to read in packages here
+library(ggplot2)
+library(hrbrthemes)
+library(dplyr)
+library(tidyr)
+library(viridis)
 library(tidyverse)
 library(janitor)
 library(here)
-library(flextable)
 library(ggpattern)
 
 # insert code to read in your data here
@@ -37,6 +41,7 @@ ggplot(data = ev_data, # use the ev_data data frame
     geom_boxplot()+ # first layer is the boxplot
     geom_jitter(width = 0.2, # jitter in the x-axis
                 height = 0)+ # no jitter in the y-axis
+  theme_bw()+ # change the theme
     labs(x = "Presence of the Sun", # relabeling the x-axis
          y = "Time until EV mode switch (min)")+ #relabeling the y-axis
        scale_color_manual(values = c("Yes" = "goldenrod", # change the default color
@@ -47,13 +52,37 @@ ggplot(data = ev_data, # use the ev_data data frame
 ## Visualization 2
 
 ```{r}
-
+ggplot(data = ev_data, # use the ev_data data frame
+       aes(x = EV_switch_time, # time until ev switch on the x-axis
+           group = Presence_of_the_Sun, # group by presence of the sun
+           fill = Presence_of_the_Sun))+ # fill color by presence of the sun
+   geom_density(adjust=1.5) +
+    theme_ipsum() + # change theme 
+    facet_wrap(~Presence_of_the_Sun) + # show 2 density plots based on grouping
+    theme(
+      legend.position="none",
+      panel.spacing = unit(0.1, "lines"),
+      axis.ticks.x=element_blank()
+    )+
+  scale_fill_manual(values = c("Yes" = "goldenrod", "No" = "royalblue4"))# change the default color
 ```
 
 
 ## Visualization 3
 
 ```{r}
-
+ggplot(data = ev_data,# use the ev_data data frame 
+       aes(x = Time_passed_since_shutoff,# temperature on the x-axis
+           y = EV_switch_time,
+           color = Presence_of_the_Sun)) +#time until ev switch on the y-axis
+    geom_point() + #adding points
+    geom_line() +#adding lines
+  theme_bw()+ # change the theme
+    labs(x = "Time since engine was last shutoff (hr:min)",# relabeling x-axis
+         y = "Time until EV mode switch (min:sec)")+ #relabeling y-axis
+    theme(panel.grid.major = element_blank(), # remove gridlines 
+         panel.grid.minor = element_blank())+ 
+  scale_color_manual(values = c("Yes" = "goldenrod", # change the default color
+                                    "No" = "royalblue4"))
 ```
 
