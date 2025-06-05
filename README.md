@@ -11,3 +11,6 @@ Personal data are in the data folder. Quarto and html file are in the code folde
 ## Rendered Output
 
 Link to the rendered html output is [here](https://progilegui.github.io/ENVS-193DS_advanced-data-vis/data/ENVS-193DS_advanced-data-vis.html).
+
+Link to the final infographic is 
+[here](https://github.com/progilegui/ENVS-193DS_advanced-data-vis/blob/main/images/final_infographic.png).
