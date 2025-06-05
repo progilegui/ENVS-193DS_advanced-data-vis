@@ -1,6 +1,6 @@
 ---
-title: "ENVS-193DS_advanced-data-vis"
-author: "Jose Cardoso"
+title: "ENVS-193DS Advanced Data Visualization Project"
+author: "Jose Cardoso" 
 date: "05/28/2025"
 format:
   html:
@@ -86,7 +86,7 @@ vis2 <- ggplot(data = ev_clean, # use the ev_data data frame
       axis.ticks.x=element_blank(),
       panel.grid.minor = element_blank()
     )+
-  labs(x = "Dawn or Day", # relabeling the x-axis
+  labs(x = "Time until EV mode switch (min)", # relabeling the x-axis
        y = "Density")+ #relabeling the y-axis
   scale_fill_manual(values = c("Day" = "orangered", "Dawn" = "royalblue4"))+# change the default color
   scale_color_manual(values = c("Day" = "orangered", "Dawn" = "royalblue4"))
