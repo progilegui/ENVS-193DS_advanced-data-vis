@@ -96,7 +96,7 @@ ggplot(data = ev_clean,# use the ev_data data frame
        aes(x = Time_passed_since_shutoff,# temperature on the x-axis
            y = EV_switch_time,
            color = Presence_of_the_Sun)) +#time until ev switch on the y-axis
-      geom_point(alpha = 0.85) + #adding points
+      geom_point(alpha = 0.80) + #adding points
     geom_line(alpha = 0.85) +#adding lines
   theme_ipsum()+ # change the theme
     labs(x = "Time since engine was last shutoff (hr:min)",# relabeling x-axis
