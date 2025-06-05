@@ -64,10 +64,12 @@ vis1 <- ggplot(data = ev_clean, # use the ev_data data frame
                                     "Dawn" = "royalblue4")) 
 
 ggsave("/Users/admin/Documents/github/ENVS-193DS_advanced-data-vis/images/vis1_graph.jpg", plot = vis1, width = 8, height = 6, dpi = 300)
+
+vis1
 ```
 
 
-# Visualization 2
+# Visualization 2: Density plot
 
 ```{r}
 vis2 <- ggplot(data = ev_clean, # use the ev_data data frame
@@ -90,10 +92,12 @@ vis2 <- ggplot(data = ev_clean, # use the ev_data data frame
   scale_color_manual(values = c("Day" = "orangered", "Dawn" = "royalblue4"))
 
 ggsave("/Users/admin/Documents/github/ENVS-193DS_advanced-data-vis/images/vis2_graph.jpg", plot = vis2, width = 8, height = 6, dpi = 300)
+
+vis2
 ```
 
 
-# Visualization 3
+# Visualization 3: Connected scatter plot
 
 ```{r}
 vis3 <- ggplot(data = ev_clean,# use the ev_data data frame 
@@ -111,6 +115,8 @@ vis3 <- ggplot(data = ev_clean,# use the ev_data data frame
                                     "Dawn" = "royalblue4"))
 
 ggsave("/Users/admin/Documents/github/ENVS-193DS_advanced-data-vis/images/vis3_graph.jpg", plot = vis3, width = 8, height = 6, dpi = 300)
+
+vis3
 ```
 
 # Write Up

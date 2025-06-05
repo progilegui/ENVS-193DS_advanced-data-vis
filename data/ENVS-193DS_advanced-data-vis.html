@@ -84,8 +84,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#set-up" id="toc-set-up" class="nav-link active" data-scroll-target="#set-up">1. Set up</a></li>
   <li><a href="#cleaning" id="toc-cleaning" class="nav-link" data-scroll-target="#cleaning">Cleaning</a></li>
   <li><a href="#visualization-1-boxplot-with-jitter" id="toc-visualization-1-boxplot-with-jitter" class="nav-link" data-scroll-target="#visualization-1-boxplot-with-jitter">Visualization 1: Boxplot with jitter</a></li>
-  <li><a href="#visualization-2" id="toc-visualization-2" class="nav-link" data-scroll-target="#visualization-2">Visualization 2</a></li>
-  <li><a href="#visualization-3" id="toc-visualization-3" class="nav-link" data-scroll-target="#visualization-3">Visualization 3</a></li>
+  <li><a href="#visualization-2-density-plot" id="toc-visualization-2-density-plot" class="nav-link" data-scroll-target="#visualization-2-density-plot">Visualization 2: Density plot</a></li>
+  <li><a href="#visualization-3-connected-scatter-plot" id="toc-visualization-3-connected-scatter-plot" class="nav-link" data-scroll-target="#visualization-3-connected-scatter-plot">Visualization 3: Connected scatter plot</a></li>
   <li><a href="#write-up" id="toc-write-up" class="nav-link" data-scroll-target="#write-up">Write Up</a>
   <ul class="collapse">
   <li><a href="#general-information" id="toc-general-information" class="nav-link" data-scroll-target="#general-information">General information</a></li>
@@ -177,11 +177,20 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a>       <span class="fu">scale_color_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="st">"Day"</span> <span class="ot">=</span> <span class="st">"orangered"</span>, <span class="co"># change the default color</span></span>
 <span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a>                                    <span class="st">"Dawn"</span> <span class="ot">=</span> <span class="st">"royalblue4"</span>)) </span>
 <span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a><span class="fu">ggsave</span>(<span class="st">"/Users/admin/Documents/github/ENVS-193DS_advanced-data-vis/images/vis1_graph.jpg"</span>, <span class="at">plot =</span> vis1, <span class="at">width =</span> <span class="dv">8</span>, <span class="at">height =</span> <span class="dv">6</span>, <span class="at">dpi =</span> <span class="dv">300</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a><span class="fu">ggsave</span>(<span class="st">"/Users/admin/Documents/github/ENVS-193DS_advanced-data-vis/images/vis1_graph.jpg"</span>, <span class="at">plot =</span> vis1, <span class="at">width =</span> <span class="dv">8</span>, <span class="at">height =</span> <span class="dv">6</span>, <span class="at">dpi =</span> <span class="dv">300</span>)</span>
+<span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-20"><a href="#cb3-20" aria-hidden="true" tabindex="-1"></a>vis1</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="ENVS-193DS_advanced-data-vis_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
 </div>
 </section>
-<section id="visualization-2" class="level1">
-<h1>Visualization 2</h1>
+<section id="visualization-2-density-plot" class="level1">
+<h1>Visualization 2: Density plot</h1>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>vis2 <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(<span class="at">data =</span> ev_clean, <span class="co"># use the ev_data data frame</span></span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>       <span class="fu">aes</span>(<span class="at">x =</span> EV_switch_time, <span class="co"># time until ev switch on the x-axis</span></span>
@@ -202,11 +211,20 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="st">"Day"</span> <span class="ot">=</span> <span class="st">"orangered"</span>, <span class="st">"Dawn"</span> <span class="ot">=</span> <span class="st">"royalblue4"</span>))<span class="sc">+</span><span class="co"># change the default color</span></span>
 <span id="cb4-18"><a href="#cb4-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_color_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="st">"Day"</span> <span class="ot">=</span> <span class="st">"orangered"</span>, <span class="st">"Dawn"</span> <span class="ot">=</span> <span class="st">"royalblue4"</span>))</span>
 <span id="cb4-19"><a href="#cb4-19" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-20"><a href="#cb4-20" aria-hidden="true" tabindex="-1"></a><span class="fu">ggsave</span>(<span class="st">"/Users/admin/Documents/github/ENVS-193DS_advanced-data-vis/images/vis2_graph.jpg"</span>, <span class="at">plot =</span> vis2, <span class="at">width =</span> <span class="dv">8</span>, <span class="at">height =</span> <span class="dv">6</span>, <span class="at">dpi =</span> <span class="dv">300</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb4-20"><a href="#cb4-20" aria-hidden="true" tabindex="-1"></a><span class="fu">ggsave</span>(<span class="st">"/Users/admin/Documents/github/ENVS-193DS_advanced-data-vis/images/vis2_graph.jpg"</span>, <span class="at">plot =</span> vis2, <span class="at">width =</span> <span class="dv">8</span>, <span class="at">height =</span> <span class="dv">6</span>, <span class="at">dpi =</span> <span class="dv">300</span>)</span>
+<span id="cb4-21"><a href="#cb4-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-22"><a href="#cb4-22" aria-hidden="true" tabindex="-1"></a>vis2</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="ENVS-193DS_advanced-data-vis_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
 </div>
 </section>
-<section id="visualization-3" class="level1">
-<h1>Visualization 3</h1>
+<section id="visualization-3-connected-scatter-plot" class="level1">
+<h1>Visualization 3: Connected scatter plot</h1>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>vis3 <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(<span class="at">data =</span> ev_clean,<span class="co"># use the ev_data data frame </span></span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>                <span class="fu">aes</span>(<span class="at">x =</span> Time_passed_since_shutoff,<span class="co"># temperature on the x-axis</span></span>
@@ -222,7 +240,16 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a>            <span class="fu">scale_color_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="st">"Day"</span> <span class="ot">=</span> <span class="st">"orangered"</span>, <span class="co"># change the default color</span></span>
 <span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a>                                    <span class="st">"Dawn"</span> <span class="ot">=</span> <span class="st">"royalblue4"</span>))</span>
 <span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a><span class="fu">ggsave</span>(<span class="st">"/Users/admin/Documents/github/ENVS-193DS_advanced-data-vis/images/vis3_graph.jpg"</span>, <span class="at">plot =</span> vis3, <span class="at">width =</span> <span class="dv">8</span>, <span class="at">height =</span> <span class="dv">6</span>, <span class="at">dpi =</span> <span class="dv">300</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a><span class="fu">ggsave</span>(<span class="st">"/Users/admin/Documents/github/ENVS-193DS_advanced-data-vis/images/vis3_graph.jpg"</span>, <span class="at">plot =</span> vis3, <span class="at">width =</span> <span class="dv">8</span>, <span class="at">height =</span> <span class="dv">6</span>, <span class="at">dpi =</span> <span class="dv">300</span>)</span>
+<span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-17"><a href="#cb5-17" aria-hidden="true" tabindex="-1"></a>vis3</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="ENVS-193DS_advanced-data-vis_files/figure-html/unnamed-chunk-5-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
 </div>
 </section>
 <section id="write-up" class="level1">
