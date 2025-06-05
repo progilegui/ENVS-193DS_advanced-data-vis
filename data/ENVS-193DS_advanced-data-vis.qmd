@@ -25,8 +25,6 @@ library(tidyverse)
 library(janitor)
 library(here)
 library(ggpattern)
-library(fontawesome)
-library(showtext)
 
 # insert code to read in your data here
 ev_data <- read_csv("/Users/admin/Documents/github/ENVS-193DS_homework-03/data/EV_Mode_2.csv")
@@ -37,8 +35,8 @@ ev_data <- read_csv("/Users/admin/Documents/github/ENVS-193DS_homework-03/data/E
 ```{r}
 ev_clean <- ev_data |> 
   mutate(Presence_of_the_Sun = case_when(
-    Presence_of_the_Sun == "Yes" ~ "Day",
-    Presence_of_the_Sun == "No" ~ "Dawn"
+    Presence_of_the_Sun == "Yes" ~ "Day", #change yes value to day
+    Presence_of_the_Sun == "No" ~ "Dawn" #change no value to dawn
   ))
 ```
 
@@ -56,8 +54,8 @@ vis1 <- ggplot(data = ev_clean, # use the ev_data data frame
                 alpha = 0.85)+ # no jitter in the y-axis
   theme_ipsum()+ # change the theme
   theme(
-      legend.position="none",
-      panel.grid.minor = element_blank())+
+      legend.position="none", #remove legend
+      panel.grid.minor = element_blank())+ #show only grid along x and y axes values shown
     labs(x = "Dawn or Day", # relabeling the x-axis
          y = "Time until EV mode switch (min)")+ #relabeling the y-axis
        scale_color_manual(values = c("Day" = "orangered", # change the default color
@@ -81,10 +79,10 @@ vis2 <- ggplot(data = ev_clean, # use the ev_data data frame
     theme_ipsum() + # change theme 
     facet_wrap(~Presence_of_the_Sun) + # show 2 density plots based on grouping
     theme(
-      legend.position="none",
-      panel.spacing = unit(0.1, "lines"),
+      legend.position="none", #remove legend
+      panel.spacing = unit(0.1, "lines"), 
       axis.ticks.x=element_blank(),
-      panel.grid.minor = element_blank()
+      panel.grid.minor = element_blank() #show only grid along x and y axes values shown
     )+
   labs(x = "Time until EV mode switch (min)", # relabeling the x-axis
        y = "Density")+ #relabeling the y-axis
@@ -109,7 +107,7 @@ vis3 <- ggplot(data = ev_clean,# use the ev_data data frame
             theme_ipsum()+ # change the theme
             labs(x = "Time since engine was last shutoff (hr:min)",# relabeling x-axis
                   y = "Time until EV mode switch (min:sec)")+ #relabeling y-axis
-            theme(legend.position="none",
+            theme(legend.position="none", #remove legend
             panel.grid.minor = element_blank())+ # remove minor gridlines
             scale_color_manual(values = c("Day" = "orangered", # change the default color
                                     "Dawn" = "royalblue4"))
@@ -123,7 +121,15 @@ vis3
 
 ## General information
 
-- I am highlighting the increase in time it takes for my car's hybrid engine to switch to EV only mode as a function of temperature.
+- I am highlighting the increase in time it takes for my car's hybrid engine to switch to EV only mode as a function of temperature by using the type of illumination as a proxy for temperature in both visualization one and two. 
+- I used a white background and narrow arial as my font to make the visualizations and text stand out. I filled in the dawn category with royal blue to symbolize the colder, pre-sun hour, and filled in the day category with orange red to symbolize the warmer, daytime hours. I labeled Visualization 3 as my 'A' visualization in the final infographic to be an example of inconclusive correlation with my response variable and my parameters so that Visualization 1 and 2 demonstrated examples of clear correlation.
 
 ## Sources and process
 
+- Visualization 3 was inspired by Georgios Karamanis’s [visualization of Himalayan expedition data](https://github.com/gkaramanis/tidytuesday/blob/master/2025/2025-week_04/plots/himalayan-2025.png)
+- Visualization 2 was inspired by Cédric Scherer’s [visualization of the Palmer Penguins dataset](https://github.com/Z3tt/TidyTuesday/tree/main/plots/2020_31)
+- Visualization 1 was inspired by [Ifeoma Egbogah’s visualization of the Palmer Penguins dataset](https://github.com/symplyelah/Tidytuesday/tree/master/2025/Palmer%20Penguins)
+
+- The coding process began with changing the Presence_of_the_Sun value in the my personal data from yes or no to day or dawn, respectively. No other cleaning or summarizing was necessary to plot the data with ggplot. Geom_point, geom_line, geom_density, geom_jitter, and geom_boxplot were used at the beginning and end of the coding process, with legends removed from all visualizations. 
+
+- I used code examples from the coding workshops, previous assignments, and the R Graph Gallery to create the visualizations. 
