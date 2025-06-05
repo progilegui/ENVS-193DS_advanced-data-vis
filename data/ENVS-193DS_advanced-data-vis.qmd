@@ -43,10 +43,10 @@ ev_clean <- ev_data |>
 ```
 
 
-## Visualization 1: Boxplot with jitter
+# Visualization 1: Boxplot with jitter
 
 ```{r}
-ggplot(data = ev_clean, # use the ev_data data frame
+vis1 <- ggplot(data = ev_clean, # use the ev_data data frame
        aes(x = Presence_of_the_Sun, # Sun presence on the x-axis
            y = EV_switch_time, # time until ev switch on the y-axis
            color = Presence_of_the_Sun))+ # color by if sun is present
@@ -62,13 +62,15 @@ ggplot(data = ev_clean, # use the ev_data data frame
          y = "Time until EV mode switch (min)")+ #relabeling the y-axis
        scale_color_manual(values = c("Day" = "orangered", # change the default color
                                     "Dawn" = "royalblue4")) 
+
+ggsave("images/vis1_graph.jpg", plot = vis1, width = 8, height = 6, dpi = 300)
 ```
 
 
-## Visualization 2
+# Visualization 2
 
 ```{r}
-ggplot(data = ev_clean, # use the ev_data data frame
+vis2 <- ggplot(data = ev_clean, # use the ev_data data frame
        aes(x = EV_switch_time, # time until ev switch on the x-axis
            group = Presence_of_the_Sun, # group by presence of the sun
            fill = Presence_of_the_Sun,
@@ -86,24 +88,36 @@ ggplot(data = ev_clean, # use the ev_data data frame
        y = "Density")+ #relabeling the y-axis
   scale_fill_manual(values = c("Day" = "orangered", "Dawn" = "royalblue4"))+# change the default color
   scale_color_manual(values = c("Day" = "orangered", "Dawn" = "royalblue4"))
+
+ggsave("images/vis2_graph.jpg", plot = vis2, width = 8, height = 6, dpi = 300)
 ```
 
 
-## Visualization 3
+# Visualization 3
 
 ```{r}
-ggplot(data = ev_clean,# use the ev_data data frame 
-       aes(x = Time_passed_since_shutoff,# temperature on the x-axis
-           y = EV_switch_time,
-           color = Presence_of_the_Sun)) +#time until ev switch on the y-axis
-      geom_point(alpha = 0.80) + #adding points
-    geom_line(alpha = 0.85) +#adding lines
-  theme_ipsum()+ # change the theme
-    labs(x = "Time since engine was last shutoff (hr:min)",# relabeling x-axis
-         y = "Time until EV mode switch (min:sec)")+ #relabeling y-axis
-    theme(legend.position="none",
-         panel.grid.minor = element_blank())+ # remove minor gridlines
-  scale_color_manual(values = c("Day" = "orangered", # change the default color
+vis3 <- ggplot(data = ev_clean,# use the ev_data data frame 
+                aes(x = Time_passed_since_shutoff,# temperature on the x-axis
+                    y = EV_switch_time,
+                    color = Presence_of_the_Sun)) +#time until ev switch on the y-axis
+            geom_point(alpha = 0.80) + #adding points
+            geom_line(alpha = 0.85) +#adding lines
+            theme_ipsum()+ # change the theme
+            labs(x = "Time since engine was last shutoff (hr:min)",# relabeling x-axis
+                  y = "Time until EV mode switch (min:sec)")+ #relabeling y-axis
+            theme(legend.position="none",
+            panel.grid.minor = element_blank())+ # remove minor gridlines
+            scale_color_manual(values = c("Day" = "orangered", # change the default color
                                     "Dawn" = "royalblue4"))
+
+ggsave("images/vis3_graph.jpg", plot = vis3, width = 8, height = 6, dpi = 300)
 ```
+
+# Write Up
+
+## General information
+
+- I am highlighting the increase in time it takes for my car's hybrid engine to switch to EV only mode as a function of temperature.
+
+## Sources and process
 
