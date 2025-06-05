@@ -25,6 +25,8 @@ library(tidyverse)
 library(janitor)
 library(here)
 library(ggpattern)
+library(fontawesome)
+library(showtext)
 
 # insert code to read in your data here
 ev_data <- read_csv("/Users/admin/Documents/github/ENVS-193DS_homework-03/data/EV_Mode_2.csv")
@@ -54,7 +56,8 @@ ggplot(data = ev_clean, # use the ev_data data frame
                 alpha = 0.85)+ # no jitter in the y-axis
   theme_ipsum()+ # change the theme
   theme(
-      legend.position="none")+
+      legend.position="none",
+      panel.grid.minor = element_blank())+
     labs(x = "Dawn or Day", # relabeling the x-axis
          y = "Time until EV mode switch (min)")+ #relabeling the y-axis
        scale_color_manual(values = c("Day" = "orangered", # change the default color
@@ -68,16 +71,21 @@ ggplot(data = ev_clean, # use the ev_data data frame
 ggplot(data = ev_clean, # use the ev_data data frame
        aes(x = EV_switch_time, # time until ev switch on the x-axis
            group = Presence_of_the_Sun, # group by presence of the sun
-           fill = Presence_of_the_Sun))+ # fill color by presence of the sun
+           fill = Presence_of_the_Sun,
+           color = Presence_of_the_Sun))+ # fill color by presence of the sun
    geom_density(adjust = 1.5, alpha = 0.85) +
     theme_ipsum() + # change theme 
     facet_wrap(~Presence_of_the_Sun) + # show 2 density plots based on grouping
     theme(
       legend.position="none",
       panel.spacing = unit(0.1, "lines"),
-      axis.ticks.x=element_blank()
+      axis.ticks.x=element_blank(),
+      panel.grid.minor = element_blank()
     )+
-  scale_fill_manual(values = c("Day" = "orangered", "Dawn" = "royalblue4"))# change the default color
+  labs(x = "Dawn or Day", # relabeling the x-axis
+       y = "Density")+ #relabeling the y-axis
+  scale_fill_manual(values = c("Day" = "orangered", "Dawn" = "royalblue4"))+# change the default color
+  scale_color_manual(values = c("Day" = "orangered", "Dawn" = "royalblue4"))
 ```
 
 
@@ -88,14 +96,13 @@ ggplot(data = ev_clean,# use the ev_data data frame
        aes(x = Time_passed_since_shutoff,# temperature on the x-axis
            y = EV_switch_time,
            color = Presence_of_the_Sun)) +#time until ev switch on the y-axis
-    geom_point(alpha = 0.85) + #adding points
+      geom_point(alpha = 0.85) + #adding points
     geom_line(alpha = 0.85) +#adding lines
   theme_ipsum()+ # change the theme
     labs(x = "Time since engine was last shutoff (hr:min)",# relabeling x-axis
          y = "Time until EV mode switch (min:sec)")+ #relabeling y-axis
     theme(legend.position="none",
-          panel.grid.major = element_blank(), # remove gridlines 
-         panel.grid.minor = element_blank())+ 
+         panel.grid.minor = element_blank())+ # remove minor gridlines
   scale_color_manual(values = c("Day" = "orangered", # change the default color
                                     "Dawn" = "royalblue4"))
 ```
